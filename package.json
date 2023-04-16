@@ -15,6 +15,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"mastodon": "^1.2.2",
 		"material-icons": "^1.13.4"
 	}
 }

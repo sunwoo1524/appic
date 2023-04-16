@@ -2,7 +2,12 @@
     import 'material-icons/iconfont/material-icons.css';
 </script>
 
+<svelte:head>
+    <title>APPIC</title>
+</svelte:head>
+
 <nav>
+
     <a href="/"><img src="logo.png" alt="Go to home" width="30"></a>
     <a href="/"><span class="material-icons">notifications</span></a>
     <a href="/"><span class="material-icons">group</span></a>

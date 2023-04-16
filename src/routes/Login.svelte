@@ -1,9 +1,31 @@
 <script>
+    import { createApp, getAuthURL, getAccessToken } from "./api/auth";
+
+    let instance;
+
+    async function login() {
+        const url_regex = /^(?:(?:https?|ftp):\/\/)?(?:www\.)?[a-zA-Z0-9-\.]+\.[a-z]{2,}$/;
+
+        if (url_regex.test(instance)) {
+            let url;
+
+            if (instance.includes("https://") || instance.includes("http://")) {
+                url = instance;
+            } else {
+                url = "https://" + instance;
+            }
+
+            const app = await createApp(url);
+            const auth_url = getAuthURL(url, app);
+
+            location.href = auth_url;
+        }
+    }
 </script>
 
 <div class="login-form">
-    <input type="text" placeholder="Mastodon Server URL" class="url">
-    <button class="submit">Submit!</button>
+    <input type="text" placeholder="Mastodon Server URL" class="url" bind:value={instance}>
+    <button class="submit" on:click={login}>Submit!</button>
 </div>
 
 <style>
